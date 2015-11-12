@@ -6,9 +6,7 @@ Created on Sat Nov 30 22:32:04 2013
 """
 
 import matplotlib.pyplot as plt
-from matplotlib import font_manager as fm
 from matplotlib.font_manager import FontProperties, findSystemFonts
-import matplotlib.transforms as transforms
 import numpy as np
 import pandas as pd
 import os
@@ -96,7 +94,6 @@ Examples
                                 squeeze=False,
                                 sharex=True)  #,sharey=True)
     else:
-        #f, axarr = plt.subplots(2,len(cols)-1,facecolor="w",squeeze=True,figsize=(width,height),dpi=30)#,sharex=True)#,sharey=True)
         f = plt.figure(figsize=(width, height), dpi=30, facecolor="w")
         gs = gridspec.GridSpec(
             nrows=20,
@@ -217,10 +214,7 @@ Examples
             axarr_X[i].set_yticks([1])
             axarr_X[i].set_xticklabels([])
             axarr_X[i].set_yticklabels([str(cols[i])], fontproperties=font)
-            #ax.set_xticklabels([str(cols[i])],horizontalalignment='center',fontproperties=font)
-            #            ax.spines['top'].set_visible(False)
-            #            ax.spines['right'].set_visible(False)
-            #            ax.spines['left'].set_visible(False)
+
 
             if marker:
                 labelsL_str = [item[1] + (marker % item[0]).rjust(6)
@@ -319,7 +313,6 @@ Examples
         ax.spines['left'].set_visible(False)
 
     tw = ax.yaxis.get_text_widths(renderer)[0]
-    #dpi = f.properties()['dpi']
     if wspace == 0:
         pass
     else:
@@ -327,7 +320,6 @@ Examples
         aw = ax.get_tightbbox(renderer).width
         wspace = tw / aw * 1.4
 
-    #f.subplots_adjust(wspace=wspace)
     f.subplots_adjust(wspace=wspace)
 
     if kind == "stack":
@@ -336,17 +328,16 @@ Examples
         pass
 
     if savename:
-        f.savefig(os.path.join('Output', savename), dpi=dpi)
-        #os.system("start " + savename)
+        f.savefig( savename, dpi=dpi)
 
     return f
 
 if __name__ == '__main__':
 
-    data_tv = pd.read_csv(os.path.join('Dadata 'television.csv'),
+    data_tv = pd.read_csv(os.path.join('data','television.csv'),
                           names=['before', 'after'],
                           index_col=0)
-    data_EU = pd.read_csv(os.path.join('Dadata 'EU_GDP_2007_2013.csv'),
+    data_EU = pd.read_csv(os.path.join('data','EU_GDP_2007_2013.csv'),
                           index_col=0,
                           na_values='-')
 
@@ -356,12 +347,25 @@ if __name__ == '__main__':
         'Ireland': 'chocolate',
         'United Kingdom': 'purple'
     }
-    #f = slopeGrid(data_EU,width =8,height= 16,kind='interval',color=EU_color,savename='EU.png',marker=None)   
+
+    f = slope(
+    data_EU.ix[:,:-3] / 1000,
+    kind='interval',
+    height=18,
+    width=30,
+    font_size=20,
+    color=EU_color,
+    title=
+    u'European GPD until 2010 and forecasts at market prices (billions of Euro) source : EUROSTAT')
+    #
+    cancer_data = pd.read_csv(os.path.join('data','cancer_survival_rate.csv'),
+                              index_col=0)
+
+
+
+    #f = slopeGrid(data_EU,width =8,height= 16,kind='interval',color=EU_color,savename='EU.png',marker=None)
     #data_tv['later'] = data_tv['before']
     #    cancer_data = pd.read_csv('Dadataancer_survival_rate.csv',index_col=0)
-    #
-    cancer_data = pd.read_csv(os.path.join('Dadata 'cancer_survival_rate.csv'),
-                              index_col=0)
     #data = pd.read_csv(os.path.join('Dadata'test.csv'),index_col=0)
     #    tv_color = {'Russia' : 'r','France':'b'}
     #    cancer_color = {'Breast' : 'g','Testis':'b'}
@@ -373,12 +377,4 @@ if __name__ == '__main__':
     #f = slope(data_EU/1000,kind='interval',marker=None,height= 12,width=20,font_size=12,savename='test.png',color=EU_color,title = u'European GPD until 2010 and forecasts at market prices (billions of Euro) source : EUROSTAT')         
     #f = slope(data_EU/1000,kind='interval',height= 18,width=30,font_size=20,savename='EU_interval.png',color=EU_color,title = u'European GPD until 2010 and forecasts at market prices (billions of Euro) source : EUROSTAT')         
     #source = "Source: GDP Millions of PPS:EUROSTAT,[1] GDP(PPP) per inhabitant: EUROSTAT,[1] GDP per capita in PPS :EUROSTAT,[7] GDP per capita expressed in PPS in percentage of EU (2011): EUROSTAT[8]"
-    f = slope(
-        data_EU.ix[:,:-3] / 1000,
-        kind='interval',
-        height=18,
-        width=30,
-        font_size=20,
-        color=EU_color,
-        title=
-        u'European GPD until 2010 and forecasts at market prices (billions of Euro) source : EUROSTAT')
+
