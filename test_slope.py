@@ -2,6 +2,8 @@ import pytest
 
 
 def test_interval_plot():
+    import matplotlib
+    matplotlib.use('Agg')
     from plotSlope import slope
     import pandas as pd
     import os
@@ -39,6 +41,8 @@ def test_interval_plot():
 
 
 def test_ordinal_plot():
+    import matplotlib
+    matplotlib.use('Agg')
     from plotSlope import slope
     import numpy as np
     import pandas as pd
