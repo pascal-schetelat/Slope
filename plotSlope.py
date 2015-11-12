@@ -29,14 +29,14 @@ def slope(data,
           dpi=150,
           wspace=None, ):
     """====
-Slope
+slope
 ====
 
 Definition: slope(data,kind=['interval','ordinal'],height,width,font_size,savename,color,title)
 
 ----
 
-Plot Slope plot Tufte Style
+Plot slope plot Tufte Style
 :class:`matplotlib.figure.Figure object`. 
 
 Parameters
@@ -75,7 +75,7 @@ title      : a title at the bottom of the graph
 Examples
 --------
 
->>> data = pd.read_csv(os.path.join('Data','EU_GDP_2007_2013.csv'),index_col=0,na_values='-')
+>>> data = pd.read_csv(os.path.join(ddata'EU_GDP_2007_2013.csv'),index_col=0,na_values='-')
 >>> f = slope(data/1000,kind='interval',height= 12,width=20,font_size=12,savename='EU_interval.png',title = u'title')  
 
     
@@ -343,10 +343,10 @@ Examples
 
 if __name__ == '__main__':
 
-    data_tv = pd.read_csv(os.path.join('Data', 'television.csv'),
+    data_tv = pd.read_csv(os.path.join('Dadata 'television.csv'),
                           names=['before', 'after'],
                           index_col=0)
-    data_EU = pd.read_csv(os.path.join('Data', 'EU_GDP_2007_2013.csv'),
+    data_EU = pd.read_csv(os.path.join('Dadata 'EU_GDP_2007_2013.csv'),
                           index_col=0,
                           na_values='-')
 
@@ -358,11 +358,11 @@ if __name__ == '__main__':
     }
     #f = slopeGrid(data_EU,width =8,height= 16,kind='interval',color=EU_color,savename='EU.png',marker=None)   
     #data_tv['later'] = data_tv['before']
-    #    cancer_data = pd.read_csv('Data/cancer_survival_rate.csv',index_col=0)
+    #    cancer_data = pd.read_csv('Dadataancer_survival_rate.csv',index_col=0)
     #
-    cancer_data = pd.read_csv(os.path.join('Data', 'cancer_survival_rate.csv'),
+    cancer_data = pd.read_csv(os.path.join('Dadata 'cancer_survival_rate.csv'),
                               index_col=0)
-    #data = pd.read_csv(os.path.join('Data','test.csv'),index_col=0)
+    #data = pd.read_csv(os.path.join('Dadata'test.csv'),index_col=0)
     #    tv_color = {'Russia' : 'r','France':'b'}
     #    cancer_color = {'Breast' : 'g','Testis':'b'}
     #   
