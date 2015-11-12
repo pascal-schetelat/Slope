@@ -1,9 +1,64 @@
 # -*- coding: utf-8 -*-
 """
+
+
+====
+slope
+====
+
+Definition: slope(data,kind=['interval','ordinal'],height,width,font_size,savename,color,title)
+
+----
+
+Plot slope plot Tufte Style
+:class:`matplotlib.figure.Figure object`.
+
+Parameters
+----------
+data : pandas dataFrame
+    index indicate the categories
+    columns indicate time / period
+
+
+marker style : str, format
+            Format to present the data
+            default '%0.f'
+
+label_position : str ['ordinal', 'interval']
+            how to position labels.
+            Interval will place them according to their values
+            Ordinal will place them according to their rank
+
+font_family     : font family name installed on your system
+
+font_size : set the font size
+            in case your data have more lines than you can have text lines of text
+            in your figure height, data will be binned to fit
+            (default 12)
+
+height    :   Figure height in inches (default 12)
+
+with      :   Figure width in inches (default 8)
+
+savename     :  file path to save your graph
+
+color     : a dictionary {label:color}
+
+title      : a title at the bottom of the graph
+
+Examples
+--------
+
+>>> data = pd.read_csv(os.path.join(ddata'EU_GDP_2007_2013.csv'),index_col=0,na_values='-')
+>>> f = slope(data/1000,kind='interval',height= 12,width=20,font_size=12,savename='EU_interval.png',title = u'title')
+
+
 Created on Sat Nov 30 22:32:04 2013
 
 @author: pascal Schetelat
-"""
+    """
+__author__ = "schetelat"
+
 
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties, findSystemFonts
@@ -26,58 +81,7 @@ def slope(data,
           savename=None,
           dpi=150,
           wspace=None, ):
-    """====
-slope
-====
 
-Definition: slope(data,kind=['interval','ordinal'],height,width,font_size,savename,color,title)
-
-----
-
-Plot slope plot Tufte Style
-:class:`matplotlib.figure.Figure object`. 
-
-Parameters
-----------
-data : pandas dataFrame
-    index indicate the categories
-    columns indicate time / period
-
-    
-marker style : str, format
-            Format to present the data
-            default '%0.f'
-
-label_position : str ['ordinal', 'interval']
-            how to position labels.
-            Interval will place them according to their values
-            Ordinal will place them according to their rank
-
-font_family     : font family name installed on your system
-            
-font_size : set the font size
-            in case your data have more lines than you can have text lines of text
-            in your figure height, data will be binned to fit 
-            (default 12)
-
-height    :   Figure height in inches (default 12)
-
-with      :   Figure width in inches (default 8)
-
-savename     :  file path to save your graph
-
-color     : a dictionary {label:color} 
- 
-title      : a title at the bottom of the graph
-
-Examples
---------
-
->>> data = pd.read_csv(os.path.join(ddata'EU_GDP_2007_2013.csv'),index_col=0,na_values='-')
->>> f = slope(data/1000,kind='interval',height= 12,width=20,font_size=12,savename='EU_interval.png',title = u'title')  
-
-    
-    """
     font = FontProperties(font_family)
     font.set_size(font_size)
     bx = None
