@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/pascal-schetelat/Slope.svg?branch=master)](https://travis-ci.org/pascal-schetelat/Slope)
-Slope
+
+Slope [![Build Status](https://travis-ci.org/pascal-schetelat/Slope.svg?branch=master)](https://travis-ci.org/pascal-schetelat/Slope)
 =====
 
 E. Tufte slope graph implementation in Python
