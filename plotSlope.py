@@ -238,7 +238,7 @@ def slope(data,
                 ax.set_yticklabels(labelsL_str, fontproperties=font)
             elif marker:
                 ax.set_yticks(yPos_L.values)
-                ax.set_yticklabels(ylabelsL_str,
+                ax.set_yticklabels([el for el in  ylabelsL_str],
                                    fontproperties=font,
                                    ha='right'
                                    )  #ha='center')#,backgroundcolor='w')
