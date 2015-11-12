@@ -29,6 +29,6 @@ install:
   - pip install pytest
 
 script:
-  - python setup.py test
+  -  invoke test
 
 sudo: false
